@@ -12,8 +12,8 @@ class ApplicationController < Sinatra::Base
     if params[:name] == "" || params[:ingredients] == "" || params[:cook_time] == ""
         redirect '/recipes/new'
     else
-      Recipe.create(name: params[:name], ingredients: params[:ingredients], cook_time: params[:cook_time])
-        redirect '/recipes/:id'
+      @recipe = Recipe.create(name: params[:name], ingredients: params[:ingredients], cook_time: params[:cook_time])
+        redirect '/recipes/@recipe.id'
     end
   end
 
