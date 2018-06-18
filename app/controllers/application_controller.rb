@@ -9,12 +9,10 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/recipes' do  #creates a post
-    if params[:name] == "" || params[:ingredients] == "" || params[:cook_time] == ""
-        redirect '/recipes/new'
-    else
+
       Recipe.create(name: params[:name], ingredients: params[:ingredients], cook_time: params[:cook_time])
-      redirect '/recipes/#{Recipe.last.id}'
-    end
+      binding.pry
+      redirect '/recipes/Recipe.last.id'
   end
 
   get '/recipes' do
