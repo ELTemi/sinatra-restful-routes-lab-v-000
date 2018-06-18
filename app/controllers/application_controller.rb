@@ -9,10 +9,10 @@ class ApplicationController < Sinatra::Base
   end
 
   post '/recipes' do  #creates a post
-    if params[:name] == "" || params[:ingredients] == "" || params[:cook_time] == "" 
+    if params[:name] == "" || params[:ingredients] == "" || params[:cook_time] == ""
         redirect '/recipes/new'
     else
-      Recipe.create(username: params[:username], password: params[:password])
+      Recipe.create(name: params[:name], ingredients: params[:ingredients], cook_time: params[:cook_time])
         redirect '/recipes'
     end
   end
